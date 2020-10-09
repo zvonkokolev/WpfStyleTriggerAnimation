@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfStyleTriggerAnimation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStyleTriggerAnimation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter" SourceName="tblEvent">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="50" Duration="0:0:0.3" DecelerationRatio="1" Storyboard.TargetProperty="FontSize" Storyboard.TargetName="tblEvent"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave" SourceName="tblEvent">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation To="18" Duration="0:0:0.3" DecelerationRatio="1" Storyboard.TargetProperty="FontSize" Storyboard.TargetName="tblEvent"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="217.02" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource tblRedUnderlined}" HorizontalAlignment="Stretch" Margin="20,20,20,20" Text="beim MouseOver Text Rot, unterstrichen" TextWrapping="Wrap" VerticalAlignment="Bottom" FontFamily="Arial">
+        </TextBlock>
+        <!--TextBlock x:Name="tblChecked" Grid.Column="1" HorizontalAlignment="Left" Margin="20,20,20,20" Text="Nein" Foreground="Red" VerticalAlignment="Bottom" Grid.Row="1"-->
+        <CheckBox Style="{DynamicResource chkBoxChecked}" Grid.Column="1" HorizontalAlignment="Left" Margin="20,20,20,20" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"/>
+        <TextBlock x:Name="tblEvent" Style="{DynamicResource tblEventTriger}" Grid.Column="2" HorizontalAlignment="Left" Margin="20,120,20,20" Text="TextBlock" VerticalAlignment="Top" Grid.Row="0" />
+    </Grid>
+</Window>
